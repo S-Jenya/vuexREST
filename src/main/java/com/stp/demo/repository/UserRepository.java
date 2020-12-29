@@ -15,13 +15,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Modifying(clearAutomatically = true)
     @Transactional
-    @Query("update User u set u.name = ?1 where u.id_user = ?2")
+    @Query("update User u set u.name = ?1 where u.idUser = ?2")
     void updUser(String userName, Long userId);
 
     @Query("select u from User u")
     List<User> findAllByCustomQuery();
 
-    @Query("select u from User u where u.id_user = ?1")
+    @Query("select u from User u where u.idUser = ?1")
     User getUserInfo(Long userId);
 
     Optional<User> findByName(String s);

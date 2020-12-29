@@ -94,7 +94,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.stp.rest_spring_vue.RestSpringVueApplication</mainClass>
+                            <mainClass>com.stp.demo.RestSpringVuexApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

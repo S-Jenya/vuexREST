@@ -8,7 +8,9 @@ import com.stp.demo.service.CardService;
 import com.stp.demo.service.InstitutionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 @RestController
+@CrossOrigin(origins = "http://localhost:4000")
 public class InstitutionController {
 
     private final InstitutionService institutionService;
@@ -20,7 +22,7 @@ public class InstitutionController {
         this.cardService = cardService;
     }
 
-    @CrossOrigin(origins = "http://localhost:4000")
+
     @RequestMapping(value = "/create-inst/confirmed", method = RequestMethod.POST)
     public void updateCard(@RequestBody Data data) {
         Card card = cardService.findCardById(data.getId());
@@ -41,14 +43,13 @@ public class InstitutionController {
     }
 
 
-    @CrossOrigin(origins = "http://localhost:4000")
     @GetMapping("/inst-update/{id_card}/{id_inst}/getInfo")
     public Institution getInstForm(@PathVariable("id_card") Long id_card, @PathVariable("id_inst") Long id_inst) {
         Institution institution = institutionService.selectInstByName(id_inst);
         return institution;
     }
 
-    @CrossOrigin(origins = "http://localhost:4000")
+
     @RequestMapping(value = "/update-inst/confirmed", method = RequestMethod.POST)
     public void updateInst(@RequestBody DataInstUpd data) {
         Card card = cardService.findCardById(data.getId());
@@ -82,7 +83,7 @@ public class InstitutionController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4000")
+
     @RequestMapping(value = "/inst-del/confirmed", method = RequestMethod.POST)
     public void deleteInst(@RequestBody Data data) {
         Card card = cardService.findCardById(data.getId());

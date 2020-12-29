@@ -12,7 +12,7 @@ import java.util.List;
 public class Institution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "institution_id")
+    @Column(name = "institutionId")
     private Long id;
 
     public List<Card> getCards() {

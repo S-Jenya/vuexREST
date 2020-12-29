@@ -12,17 +12,17 @@ import java.util.List;
 @Repository
 public interface CardRepository extends JpaRepository<Card, Long> {
 
-    @Query("select user.cards from User user where user.id_user = ?1")
+    @Query("select user.cards from User user where user.idUser = ?1")
     List<Card> findCardByUserIdCustomQuery(Long userId);
 
     @Modifying(clearAutomatically = true)
     @Transactional
-    @Query("update Card card set card.headline = ?1 where card.id_card = ?2")
+    @Query("update Card card set card.headline = ?1 where card.idCard = ?2")
     void updCard(String newName, Long cardId);
 
-    @Query("select card from Card card where card.user.id_user = ?1")
+    @Query("select card from Card card where card.user.idUser = ?1")
     List<Card> findCardCustomQuery(Long userId);
 
-    @Query("select card from Card card where card.id_card = ?1")
+    @Query("select card from Card card where card.idCard = ?1")
     Card findCardByIdCustomQuery(Long idCard);
 }
