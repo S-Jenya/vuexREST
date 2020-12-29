@@ -8,7 +8,6 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "card")
-//@ToString(exclude="user")
 public class Card {
 
     @Id

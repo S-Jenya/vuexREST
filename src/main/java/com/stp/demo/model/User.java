@@ -6,12 +6,10 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @Entity
 @Table(name = "user")
-//@ToString(exclude="cards")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
