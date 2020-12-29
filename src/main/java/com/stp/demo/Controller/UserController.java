@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4000")
 public class UserController {
 
     private final UserService userService;
@@ -25,7 +26,7 @@ public class UserController {
         this.institutionService = institutionService;
     }
 
-    @CrossOrigin(origins = "http://localhost:4000")
+
     @GetMapping("/user/getUsers")
     public List<User> findAllUsers() {
         List<User> user = userService.customSelect();
@@ -33,7 +34,6 @@ public class UserController {
     }
 
 
-    @CrossOrigin(origins = "http://localhost:4000")
     @GetMapping(value = "/user-create/{name}/{password}/{role}")
     public String createUser(@PathVariable("name") String name,
                              @PathVariable("password") String password,
@@ -47,21 +47,19 @@ public class UserController {
     }
 
 
-    @CrossOrigin(origins = "http://localhost:4000")
     @GetMapping("/user-delete/{id}")
     public void deleteUser(@PathVariable("id") Long id) {
         User user = userService.findById(id);
-        System.out.println(user.getId_user());
+        System.out.println(user.getIdUser());
         List<Card> cards = new ArrayList<Card>();
-        cards = cardService.selectCardByUserId(user.getId_user());
+        cards = cardService.selectCardByUserId(user.getIdUser());
 
         for (Card card : cards) {
-            cardService.deleteById(card.getId_card());
+            cardService.deleteById(card.getIdCard());
         }
         userService.deleteById(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:4000")
     @GetMapping("/user-info/{id}/get")
     public Map<String, Object> userInfoForm(@PathVariable("id") Long id) {
         User user = userService.getUserInfo(id);
@@ -78,7 +76,6 @@ public class UserController {
         return user;
     }
 
-    @CrossOrigin(origins = "http://localhost:4000")
     @RequestMapping(value = "/user-update/confirmed", method = RequestMethod.POST)
     public void updateUser(@RequestBody Data data) {
         userService.updUserName(data.getName(), data.getId());

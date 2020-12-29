@@ -2,8 +2,6 @@ package com.stp.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,7 +12,7 @@ import java.util.List;
 public class Institution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "institution_id")
+    @Column(name = "institutionId")
     private Long id;
 
     public List<Card> getCards() {

@@ -8,25 +8,24 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "card")
-//@ToString(exclude="user")
 public class Card {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_card")
-    private Long id_card;
+    @Column(name = "idCard")
+    private Long idCard;
 
     private String headline;
 
     @ManyToOne
-    @JoinColumn(name = "id_user", nullable = false)
+    @JoinColumn(name = "idUser", nullable = false)
     private User user;
 
     @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "Card_institution",
-            joinColumns = { @JoinColumn(name = "card_id") },
-            inverseJoinColumns = { @JoinColumn(name = "institution_id") }
+            name = "CardInstitution",
+            joinColumns = { @JoinColumn(name = "cardId") },
+            inverseJoinColumns = { @JoinColumn(name = "institutionId") }
     )
     private List<Institution> institutions;
 
@@ -42,12 +41,12 @@ public class Card {
         this.institutions = institutions;
     }
 
-    public void setId_card(Long id_card) {
-        this.id_card = id_card;
+    public void setIdCard(Long idCard) {
+        this.idCard = idCard;
     }
 
-    public Long getId_card() {
-        return id_card;
+    public Long getIdCard() {
+        return idCard;
     }
 
     public void setHeadline(String headline) {
@@ -99,10 +98,10 @@ public class Card {
     }
 
     public void setIdNyll() {
-        this.id_card = null;
+        this.idCard = null;
     }
 
     public String toString() {
-        return "Id: " + this.id_card + "; headline: " + this.headline;
+        return "Id: " + this.idCard + "; headline: " + this.headline;
     }
 }

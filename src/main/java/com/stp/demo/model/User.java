@@ -2,21 +2,18 @@ package com.stp.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @Entity
 @Table(name = "user")
-//@ToString(exclude="cards")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_user")
-    private Long id_user;
+    @Column(name = "idUser")
+    private Long idUser;
     @Column(
             name = "name",
             unique = true
@@ -33,8 +30,8 @@ public class User {
     @Column(name = "role")
     private String role;
 
-    public Long getId_user() {
-        return id_user;
+    public Long getIdUser() {
+        return idUser;
     }
 
     public String getName() {
@@ -53,8 +50,8 @@ public class User {
         this.cards = cards;
     }
 
-    public void setId_user(Long id_user) {
-        this.id_user = id_user;
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
     }
 
     public List<Card> getCards() {
@@ -74,7 +71,7 @@ public class User {
     }
 
     public String toString() {
-        return "Id: " + this.id_user +
+        return "Id: " + this.idUser +
                 "; name: " + this.name +
                 "; role: " + this.role +
                 "; password: " + this.password;
